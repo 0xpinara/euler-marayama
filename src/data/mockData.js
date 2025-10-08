@@ -1,6 +1,6 @@
 // Mock data for demonstration purposes
 export const users = {
-  customer: { id: 1, name: 'Ayşe Yılmaz', email: 'ayse@example.com', role: 'customer' },
+  customer: { id: 1, name: 'A*** Y***', email: 'a***@example.com', role: 'customer' },
   technician: { id: 2, name: 'Mehmet Demir', email: 'mehmet@example.com', role: 'technician' },
   admin: { id: 3, name: 'Admin User', email: 'admin@example.com', role: 'admin' }
 };
@@ -10,7 +10,7 @@ export const exampleSessions = [
   {
     id: 'session-001',
     userId: 1,
-    userName: 'Ayşe Yılmaz',
+    userName: 'A*** Y***',
     appliance: 'Çamaşır Makinesi',
     status: 'resolved',
     createdAt: '2025-10-05T10:30:00',
@@ -86,7 +86,7 @@ export const exampleSessions = [
   {
     id: 'session-002',
     userId: 1,
-    userName: 'Mehmet Kaya',
+    userName: 'M*** K***',
     appliance: 'Bulaşık Makinesi',
     status: 'escalated',
     createdAt: '2025-10-06T14:20:00',
@@ -166,7 +166,7 @@ export const exampleSessions = [
   {
     id: 'session-003',
     userId: 1,
-    userName: 'Zeynep Arslan',
+    userName: 'Z*** A***',
     appliance: 'Buzdolabı',
     status: 'resolved',
     createdAt: '2025-10-07T09:15:00',
