@@ -269,13 +269,6 @@ const TechnicianDashboard = ({ user, onLogout }) => {
                     <strong>İletişim:</strong> {apt.phone}
                   </div>
 
-                  <div className="appointment-details">
-                    <div className="detail-item">
-                      <strong>Tahmini Süre:</strong>
-                      <span>{apt.estimatedDuration}</span>
-                    </div>
-                  </div>
-
                   {apt.notes && (
                     <div className="technician-notes-preview">
                       <strong>📝 Not:</strong>
