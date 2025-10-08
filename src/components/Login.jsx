@@ -59,10 +59,6 @@ const Login = ({ onLogin }) => {
             <p>Gereksiz servis çağrılarını önler</p>
           </div>
         </div>
-
-        <footer className="login-footer">
-          <p>CEng 491 - Graduation Project 2025-2026</p>
-        </footer>
       </div>
     </div>
   );
