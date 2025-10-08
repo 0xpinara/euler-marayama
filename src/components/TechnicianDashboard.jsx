@@ -289,15 +289,22 @@ const TechnicianDashboard = ({ user, onLogout }) => {
                 </div>
 
                 <div className="appointment-actions">
-                  <button className="action-btn navigate">
-                    <MapPin size={16} />
-                    Navigasyon Başlat
-                  </button>
-                  <button className="action-btn call">
-                    📞 Müşteriyi Ara
+                  <button 
+                    className="action-btn view-session"
+                    onClick={() => {
+                      const session = exampleSessions.find(s => s.id === apt.sessionId);
+                      if (session) {
+                        setSelectedSession(session);
+                        setActiveTab('sessions');
+                      }
+                    }}
+                  >
+                    <FileText size={16} />
+                    Müşteri Oturumunu Görüntüle
                   </button>
                   <button className="action-btn complete">
-                    ✓ Tamamlandı Olarak İşaretle
+                    <CheckSquare size={16} />
+                    Tamamlandı Olarak İşaretle
                   </button>
                 </div>
               </div>

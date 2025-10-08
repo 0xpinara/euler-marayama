@@ -428,23 +428,24 @@
 /* Appointments View */
 .appointments-view {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .appointments-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
-  padding: 20px;
+  margin-bottom: 28px;
+  padding: 24px 28px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .appointments-header h2 {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
@@ -462,15 +463,16 @@
 .appointments-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 .appointment-card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s;
+  max-width: 100%;
 }
 
 .appointment-card:hover {
@@ -494,7 +496,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 24px 28px;
   background: #f8fafc;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -502,15 +504,17 @@
 .appointment-time {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .appointment-time svg {
   color: #667eea;
+  width: 26px;
+  height: 26px;
 }
 
 .time-slot {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: #1e293b;
 }
@@ -538,21 +542,21 @@
 }
 
 .appointment-body {
-  padding: 28px 24px;
-  min-height: 280px;
+  padding: 32px 28px;
+  min-height: 320px;
 }
 
 .customer-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
   border-bottom: 1px solid #e2e8f0;
 }
 
 .customer-info h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: #1e293b;
   margin: 0;
@@ -569,33 +573,36 @@
 
 .appliance-info, .location-info {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
 .appliance-info svg, .location-info svg {
   flex-shrink: 0;
   color: #667eea;
   margin-top: 2px;
+  width: 20px;
+  height: 20px;
 }
 
 .appliance-info strong, .location-info strong {
   display: block;
-  font-size: 15px;
+  font-size: 16px;
   color: #1e293b;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .appliance-info p, .location-info p {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   color: #64748b;
+  line-height: 1.5;
 }
 
 .contact-info {
-  font-size: 14px;
+  font-size: 15px;
   color: #64748b;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .contact-info strong {
@@ -603,51 +610,51 @@
 }
 
 .technician-notes-preview {
-  padding: 12px;
+  padding: 16px;
   background: #fef3c7;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  border-radius: 10px;
+  margin-bottom: 18px;
 }
 
 .technician-notes-preview strong {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #78350f;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .technician-notes-preview p {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   color: #78350f;
   line-height: 1.6;
 }
 
 .required-parts {
-  padding: 12px;
+  padding: 16px;
   background: #dbeafe;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .required-parts strong {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #1e40af;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .parts-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .part-tag {
-  padding: 4px 12px;
+  padding: 6px 14px;
   background: white;
   border: 1px solid #93c5fd;
-  border-radius: 12px;
-  font-size: 13px;
+  border-radius: 14px;
+  font-size: 14px;
   color: #1e40af;
   font-weight: 500;
 }
@@ -655,60 +662,54 @@
 .appointment-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  padding: 20px 24px;
+  gap: 16px;
+  padding: 24px 28px;
   background: #f8fafc;
   border-top: 1px solid #e2e8f0;
 }
 
 .action-btn {
   flex: 1;
-  min-width: 180px;
+  min-width: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 20px;
-  border: 1px solid #e2e8f0;
+  gap: 10px;
+  padding: 16px 24px;
+  border: 2px solid #e2e8f0;
   background: white;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
 }
 
 .action-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
-.action-btn.navigate {
+.action-btn.view-session {
   color: #667eea;
   border-color: #667eea;
 }
 
-.action-btn.navigate:hover {
+.action-btn.view-session:hover {
   background: #ede9fe;
-}
-
-.action-btn.call {
-  color: #48bb78;
-  border-color: #48bb78;
-}
-
-.action-btn.call:hover {
-  background: #d1fae5;
-}
-
-.action-btn.complete {
-  color: #7c3aed;
   border-color: #7c3aed;
 }
 
+.action-btn.complete {
+  color: white;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  border-color: #48bb78;
+}
+
 .action-btn.complete:hover {
-  background: #ede9fe;
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+  box-shadow: 0 6px 16px rgba(72, 187, 120, 0.3);
 }
 
 .no-appointments {
