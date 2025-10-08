@@ -7,6 +7,11 @@ export default defineConfig({
     port: process.env.PORT || 4173,
     host: '0.0.0.0',
     strictPort: true,
+    allowedHosts: [
+      'v-fix-demo-production.up.railway.app',
+      '.up.railway.app',
+      'localhost',
+    ],
   },
   server: {
     host: '0.0.0.0',
