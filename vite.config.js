@@ -6,6 +6,13 @@ export default defineConfig({
   preview: {
     port: process.env.PORT || 4173,
     host: '0.0.0.0',
+    strictPort: true,
+  },
+  server: {
+    host: '0.0.0.0',
+    hmr: {
+      clientPort: process.env.PORT || 5173,
+    },
   },
 })
 
