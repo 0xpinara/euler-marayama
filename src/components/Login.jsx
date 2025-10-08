@@ -40,25 +40,6 @@ const Login = ({ onLogin }) => {
             </div>
           </button>
         </div>
-
-        <div className="features">
-          <div className="feature">
-            <h4>🤖 Çok Modlu AI</h4>
-            <p>Metin ve görüntü analizi</p>
-          </div>
-          <div className="feature">
-            <h4>🔧 Adım Adım Çözüm</h4>
-            <p>Uzman teknisyen gibi rehberlik</p>
-          </div>
-          <div className="feature">
-            <h4>✅ Garanti Uyumlu</h4>
-            <p>Garantinizi bozmayan çözümler</p>
-          </div>
-          <div className="feature">
-            <h4>💰 Maliyet Tasarrufu</h4>
-            <p>Gereksiz servis çağrılarını önler</p>
-          </div>
-        </div>
       </div>
     </div>
   );
