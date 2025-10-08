@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { LogOut, User, FileText, CheckSquare, AlertCircle } from 'lucide-react';
-import { exampleSessions } from '../data/mockData';
+import { LogOut, User, FileText, CheckSquare, AlertCircle, Calendar, MapPin, Clock, Wrench } from 'lucide-react';
+import { exampleSessions, technicianAppointments } from '../data/mockData';
 import './TechnicianDashboard.css';
 
 const TechnicianDashboard = ({ user, onLogout }) => {
   const [selectedSession, setSelectedSession] = useState(null);
   const [notes, setNotes] = useState('');
+  const [activeTab, setActiveTab] = useState('sessions');
 
   const pendingSessions = exampleSessions.filter(s => s.status === 'escalated');
   const completedSessions = exampleSessions.filter(s => s.status === 'resolved');
@@ -31,6 +32,22 @@ const TechnicianDashboard = ({ user, onLogout }) => {
           <h2>V-FIX</h2>
           <span className="user-badge technician">Teknisyen</span>
         </div>
+        <div className="nav-tabs">
+          <button 
+            className={`nav-tab ${activeTab === 'sessions' ? 'active' : ''}`}
+            onClick={() => setActiveTab('sessions')}
+          >
+            <FileText size={18} />
+            Oturumlar
+          </button>
+          <button 
+            className={`nav-tab ${activeTab === 'appointments' ? 'active' : ''}`}
+            onClick={() => setActiveTab('appointments')}
+          >
+            <Calendar size={18} />
+            Randevular
+          </button>
+        </div>
         <div className="nav-user">
           <div className="user-info">
             <User size={20} />
@@ -43,6 +60,8 @@ const TechnicianDashboard = ({ user, onLogout }) => {
       </nav>
 
       <main className="dashboard-content technician-layout">
+      {activeTab === 'sessions' ? (
+        <>
         <div className="sessions-sidebar">
           <div className="sidebar-section">
             <h3>
@@ -199,6 +218,108 @@ const TechnicianDashboard = ({ user, onLogout }) => {
             </div>
           )}
         </div>
+        </>
+      ) : (
+        <div className="appointments-view">
+          <div className="appointments-header">
+            <h2>Günlük Randevu Çizelgesi</h2>
+            <div className="today-info">
+              <Calendar size={20} />
+              <span>{new Date().toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+          </div>
+
+          <div className="appointments-list">
+            {technicianAppointments.map(apt => (
+              <div key={apt.id} className={`appointment-card priority-${apt.priority}`}>
+                <div className="appointment-header">
+                  <div className="appointment-time">
+                    <Clock size={24} />
+                    <span className="time-slot">{apt.timeSlot}</span>
+                  </div>
+                  <span className={`priority-badge ${apt.priority}`}>
+                    {apt.priority === 'high' ? 'Yüksek Öncelik' : 
+                     apt.priority === 'medium' ? 'Orta Öncelik' : 'Düşük Öncelik'}
+                  </span>
+                </div>
+
+                <div className="appointment-body">
+                  <div className="customer-info">
+                    <h3>{apt.customerName}</h3>
+                    <span className="appointment-number">#{apt.appointmentNumber}</span>
+                  </div>
+
+                  <div className="appliance-info">
+                    <Wrench size={18} />
+                    <div>
+                      <strong>{apt.appliance}</strong>
+                      <p>{apt.issue}</p>
+                    </div>
+                  </div>
+
+                  <div className="location-info">
+                    <MapPin size={18} />
+                    <div>
+                      <strong>{apt.address}</strong>
+                      <p>{apt.fullAddress}</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-info">
+                    <strong>İletişim:</strong> {apt.phone}
+                  </div>
+
+                  <div className="appointment-details">
+                    <div className="detail-item">
+                      <strong>Tahmini Süre:</strong>
+                      <span>{apt.estimatedDuration}</span>
+                    </div>
+                  </div>
+
+                  {apt.notes && (
+                    <div className="technician-notes-preview">
+                      <strong>📝 Not:</strong>
+                      <p>{apt.notes}</p>
+                    </div>
+                  )}
+
+                  {apt.requiredParts && apt.requiredParts.length > 0 && (
+                    <div className="required-parts">
+                      <strong>🔧 Gerekli Parçalar:</strong>
+                      <div className="parts-list">
+                        {apt.requiredParts.map((part, idx) => (
+                          <span key={idx} className="part-tag">{part}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="appointment-actions">
+                  <button className="action-btn navigate">
+                    <MapPin size={16} />
+                    Navigasyon Başlat
+                  </button>
+                  <button className="action-btn call">
+                    📞 Müşteriyi Ara
+                  </button>
+                  <button className="action-btn complete">
+                    ✓ Tamamlandı Olarak İşaretle
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {technicianAppointments.length === 0 && (
+            <div className="no-appointments">
+              <Calendar size={64} />
+              <h3>Bugün için randevu yok</h3>
+              <p>Güncel randevular bu sayfada görünecektir.</p>
+            </div>
+          )}
+        </div>
+      )}
       </main>
     </div>
   );

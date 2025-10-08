@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Image, Camera, AlertTriangle, CheckCircle, Shield } from 'lucide-react';
+import { Send, Image, Camera, AlertTriangle, CheckCircle, Shield, Calendar, Clock } from 'lucide-react';
 import './ChatInterface.css';
 
 const ChatInterface = ({ session }) => {
   const [messages, setMessages] = useState(session?.messages || []);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState(null);
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
 
@@ -121,6 +122,56 @@ const ChatInterface = ({ session }) => {
             <div className="high-risk-badge">
               <AlertTriangle size={16} />
               <span>Yüksek Risk - Teknisyen Gerekli</span>
+            </div>
+          )}
+          {message.showAppointmentPicker && message.availableSlots && (
+            <div className="appointment-picker">
+              <div className="appointment-slots">
+                {message.availableSlots.map((slot, index) => (
+                  <button
+                    key={index}
+                    className={`appointment-slot ${selectedSlot?.label === slot.label ? 'selected' : ''}`}
+                    onClick={() => setSelectedSlot(slot)}
+                    disabled={message.appointmentSelected}
+                  >
+                    <div className="slot-icon">
+                      <Calendar size={18} />
+                    </div>
+                    <div className="slot-info">
+                      <div className="slot-label">{slot.label}</div>
+                      <div className="slot-time">
+                        <Clock size={14} />
+                        {slot.time}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              {selectedSlot && !message.appointmentSelected && (
+                <button className="confirm-appointment-btn">
+                  <Calendar size={16} />
+                  Randevuyu Onayla
+                </button>
+              )}
+            </div>
+          )}
+          {message.appointmentConfirmed && message.appointmentDetails && (
+            <div className="appointment-confirmation">
+              <div className="confirmation-icon">✅</div>
+              <h4>Randevunuz Onaylandı!</h4>
+              <div className="confirmation-details">
+                <div className="detail-row">
+                  <Calendar size={16} />
+                  <span>{message.appointmentDetails.date}</span>
+                </div>
+                <div className="detail-row">
+                  <Clock size={16} />
+                  <span>{message.appointmentDetails.time}</span>
+                </div>
+              </div>
+              <div className="appointment-number">
+                #{message.appointmentDetails.appointmentNumber}
+              </div>
             </div>
           )}
           <span className="message-time">

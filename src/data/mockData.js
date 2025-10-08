@@ -147,11 +147,46 @@ export const exampleSessions = [
       {
         id: 9,
         sender: 'assistant',
-        text: 'Cam parçalarını temizlemeniz iyi oldu. Ancak pompa pervane kanatları zarar görmüş olabilir veya pompa motoru arızalı olabilir.\n\n🔴 **YÜKSEK RİSK TESPİT EDİLDİ**\n\nBu durum için şunları öneriyorum:\n\n1. ❌ Pompa mekanizması ile oynamayın - bu garanti kapsamı dışına çıkar\n2. ❌ Makineyi bu durumda çalıştırmayın - daha fazla hasar verebilir\n3. ✅ Yetkili servis teknisyeni çağırmanız gerekiyor\n\n📞 Sizin için bir servis talebi oluşturdum. Teknisyen 24 saat içinde sizinle iletişime geçecek.\n\n**Tahmini Sorun:** Pompa arızası veya pervane hasarı\n**Garanti Durumu:** Garanti kapsamında (cam kırığı dış etken)',
+        text: 'Cam parçalarını temizlemeniz iyi oldu. Ancak pompa pervane kanatları zarar görmüş olabilir veya pompa motoru arızalı olabilir.\n\n🔴 **YÜKSEK RİSK TESPİT EDİLDİ**\n\nBu durum için şunları öneriyorum:\n\n1. ❌ Pompa mekanizması ile oynamayın - bu garanti kapsamı dışına çıkar\n2. ❌ Makineyi bu durumda çalıştırmayın - daha fazla hasar verebilir\n3. ✅ Yetkili servis teknisyeni çağırmanız gerekiyor\n\n**Tahmini Sorun:** Pompa arızası veya pervane hasarı\n**Garanti Durumu:** Garanti kapsamında (cam kırığı dış etken)',
         timestamp: '2025-10-06T14:30:45',
         highRisk: true,
         technicianRequired: true,
         warrantyStatus: 'covered'
+      },
+      {
+        id: 10,
+        sender: 'assistant',
+        text: '📅 Teknisyen randevusu için uygun bir tarih ve saat seçin:',
+        timestamp: '2025-10-06T14:31:00',
+        showAppointmentPicker: true,
+        availableSlots: [
+          { date: '2025-10-09', time: '09:00-12:00', label: '9 Ekim Çarşamba, Sabah (09:00-12:00)' },
+          { date: '2025-10-09', time: '14:00-17:00', label: '9 Ekim Çarşamba, Öğleden Sonra (14:00-17:00)' },
+          { date: '2025-10-10', time: '09:00-12:00', label: '10 Ekim Perşembe, Sabah (09:00-12:00)' },
+          { date: '2025-10-10', time: '14:00-17:00', label: '10 Ekim Perşembe, Öğleden Sonra (14:00-17:00)' },
+          { date: '2025-10-11', time: '09:00-12:00', label: '11 Ekim Cuma, Sabah (09:00-12:00)' },
+          { date: '2025-10-11', time: '14:00-17:00', label: '11 Ekim Cuma, Öğleden Sonra (14:00-17:00)' }
+        ]
+      },
+      {
+        id: 11,
+        sender: 'user',
+        text: 'Randevu seçildi: 9 Ekim Çarşamba, Öğleden Sonra (14:00-17:00)',
+        timestamp: '2025-10-06T14:32:00',
+        appointmentSelected: true
+      },
+      {
+        id: 12,
+        sender: 'assistant',
+        text: '✅ **Randevunuz Onaylandı!**\n\n📅 **Tarih:** 9 Ekim 2025, Çarşamba\n⏰ **Saat:** 14:00-17:00\n👨‍🔧 **Teknisyen:** Mehmet Demir\n📍 **Adres:** Kayıtlı adresiniz\n\n**Randevu Numarası:** #TKN-002-2025\n\n📱 Teknisyen yola çıkmadan önce sizi arayacaktır.\n💡 Cihazınızı fişten çekili tutun.\n\nBaşka bir konuda yardımcı olabilirsem buradan ulaşabilirsiniz!',
+        timestamp: '2025-10-06T14:32:15',
+        appointmentConfirmed: true,
+        appointmentDetails: {
+          date: '2025-10-09',
+          time: '14:00-17:00',
+          technician: 'Mehmet Demir',
+          appointmentNumber: 'TKN-002-2025'
+        }
       }
     ],
     metrics: {
@@ -257,6 +292,64 @@ export const dashboardStats = {
     { issue: 'Diğer', count: 25 }
   ]
 };
+
+// Technician appointments schedule
+export const technicianAppointments = [
+  {
+    id: 'apt-001',
+    sessionId: 'session-002',
+    customerName: 'M*** K***',
+    appliance: 'Bulaşık Makinesi',
+    issue: 'Pompa arızası / Anormal ses',
+    date: '2025-10-09',
+    timeSlot: '14:00-17:00',
+    address: 'Kadıköy, İstanbul',
+    fullAddress: 'Caferağa Mah. Moda Cad. No:45 D:8, Kadıköy/İstanbul',
+    phone: '0532 *** ** 45',
+    priority: 'high',
+    estimatedDuration: '60-90 dakika',
+    appointmentNumber: 'TKN-002-2025',
+    notes: 'Pompa pervane hasarı veya motor arızası. Yedek pompa getirilmeli.',
+    requiredParts: ['Pompa pervane', 'Pompa motoru (yedek)'],
+    status: 'confirmed'
+  },
+  {
+    id: 'apt-002',
+    sessionId: 'session-004',
+    customerName: 'A*** T***',
+    appliance: 'Çamaşır Makinesi',
+    issue: 'Motor çalışmıyor',
+    date: '2025-10-09',
+    timeSlot: '09:00-12:00',
+    address: 'Beşiktaş, İstanbul',
+    fullAddress: 'Sinanpaşa Mah. Bestekar Sok. No:12 D:3, Beşiktaş/İstanbul',
+    phone: '0505 *** ** 78',
+    priority: 'medium',
+    estimatedDuration: '45-60 dakika',
+    appointmentNumber: 'TKN-004-2025',
+    notes: 'Motor kontağı veya kablo bağlantısı kontrol edilmeli.',
+    requiredParts: ['Kablo seti', 'Motor röle'],
+    status: 'confirmed'
+  },
+  {
+    id: 'apt-003',
+    sessionId: 'session-005',
+    customerName: 'E*** Y***',
+    appliance: 'Buzdolabı',
+    issue: 'Soğutmuyor',
+    date: '2025-10-10',
+    timeSlot: '09:00-12:00',
+    address: 'Şişli, İstanbul',
+    fullAddress: 'Mecidiyeköy Mah. Büyükdere Cad. No:78 D:15, Şişli/İstanbul',
+    phone: '0543 *** ** 92',
+    priority: 'high',
+    estimatedDuration: '90-120 dakika',
+    appointmentNumber: 'TKN-005-2025',
+    notes: 'Kompresör veya gaz kaçağı olabilir. Gaz dolum cihazı getirilmeli.',
+    requiredParts: ['Gaz', 'Kompresör (yedek)'],
+    status: 'pending'
+  }
+];
 
 // Knowledge base examples
 export const knowledgeBase = [
