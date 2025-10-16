@@ -8,7 +8,7 @@ const Login = ({ onLogin }) => {
       <div className="login-content">
         <div className="login-header">
           <div className="logo">
-            <Wrench size={48} />
+            <img src="/vfix-logo.png" alt="V-FIX Logo" className="logo-image" />
           </div>
           <h1>V-FIX</h1>
           <p className="tagline">Akıllı Ev Aletleri Tamir Asistanı</p>
